@@ -3,11 +3,18 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from .models import Choice
+from .forms import GetForms
 
 
 class IndexView(generic.ListView):
+    form_class = GetForms
     template_name = 'index.html'
     model = Choice
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context
 
 
 # def index(request):
