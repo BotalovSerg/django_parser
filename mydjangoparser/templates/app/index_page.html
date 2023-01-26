@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список из БД</title>
+</head>
+<body>
+    <h1>Список из БД</h1>
+    {% if all_user %}
+        <ul>
+            {% for q in all_user %}
+                <li>{{ q.id }} {{ q.name }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>В БД пусто</p>
+    {% endif %}
+
+</body>
+</html>

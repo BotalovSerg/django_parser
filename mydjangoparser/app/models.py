@@ -1,15 +1,20 @@
 import os
-from django.conf import settings
 from django.db import models
 
+# path = os.path.abspath('base')
 
-def path_dir():
-    return os.path.join(settings.LOCAL_FILE_DIR, 'base')
+
+class User(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Choice(models.Model):
     name = models.CharField(max_length=100)
-    link = models.FilePathField(path='mydjangoparser/base')
+    link = models.FileField(upload_to='base/')
+    f_key = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return f"Name {self.name}"
