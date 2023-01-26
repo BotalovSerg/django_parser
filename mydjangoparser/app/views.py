@@ -2,11 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
+from django.views.generic.edit import FormView
 from .models import Choice
 from .forms import GetForms
 
 
-class IndexView(generic.ListView):
+class IndexView(FormView):
     form_class = GetForms
     template_name = 'index.html'
     model = Choice
