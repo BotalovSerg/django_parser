@@ -6,16 +6,20 @@ from django.views.generic.edit import FormView
 from .models import Choice
 from .forms import GetForms
 
+from .logic import ParserMain
+
 
 class IndexView(FormView):
     form_class = GetForms
     template_name = 'index.html'
     model = Choice
+    success_url = '/'
+    parser = ParserMain()
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def form_valid(self, form):
+        qu = form.cleaned_data['locations'] + "+" + form.cleaned_data['keyword']
 
-        return context
+        return super().form_valid(form)
 
 
 # def index(request):
