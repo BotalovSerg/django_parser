@@ -18,7 +18,7 @@ class IndexView(FormView):
 
     def form_valid(self, form):
         qu = form.cleaned_data['locations'] + "+" + form.cleaned_data['keyword']
-
+        self.parser.get_data(qu)
         return super().form_valid(form)
 
 
