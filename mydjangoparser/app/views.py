@@ -9,17 +9,18 @@ from .forms import GetForms
 from .logic import ParserMain
 
 
-class IndexView(FormView):
-    form_class = GetForms
-    template_name = 'index.html'
-    model = Choice
-    success_url = '/'
-    parser = ParserMain()
-
-    def form_valid(self, form):
-        qu = form.cleaned_data['locations'] + "+" + form.cleaned_data['keyword']
-        self.parser.get_data(qu)
-        return super().form_valid(form)
+# class IndexView(FormView):
+#     form_class = GetForms
+#     template_name = 'index.html'
+#     model = Choice
+#     success_url = '/'
+#
+#     # parser = ParserMain()
+#
+#     def form_valid(self, form):
+#         qu = form.cleaned_data['locations'] + "+" + form.cleaned_data['keyword']
+#         # self.parser.get_data(qu)
+#         return super().form_valid(form)
 
 
 # def index(request):
